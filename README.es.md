@@ -2,7 +2,7 @@
 
 🇬🇧 [Read in English](README.md)
 
-Colección de ejercicios de **scripting en Bash**, ordenados de menor a mayor dificultad. Cada ejercicio incluye un **enunciado** y su **solución** en un script, explicada con lenguaje simple.
+Colección de ejercicios de **scripting en Bash**, ordenados de menor a mayor dificultad. Cada ejercicio incluye un **enunciado** y su **solución** en un script.
 
 ---
 
