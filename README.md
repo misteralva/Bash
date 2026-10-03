@@ -2,7 +2,7 @@
 
 🇪🇸 [Leer en español](README.es.md)
 
-A collection of **Bash scripting exercises**, ordered from easiest to hardest. Each exercise includes a **statement** (what to do) and its **solution** in a script, explained in simple language.
+A collection of **Bash scripting exercises**, ordered from easiest to hardest. Each exercise includes a **statement** (what to do) and its **solution** in a script.
 
 > 📝 **Note:** the exercise statements and the comments inside the scripts are currently written in Spanish.
 
