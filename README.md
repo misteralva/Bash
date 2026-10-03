@@ -1,6 +1,6 @@
 # 🐧 Bash Exercises
 
-🇪🇸 [Leer en español](README.md)
+🇪🇸 [Leer en español](README.es.md)
 
 A collection of **Bash scripting exercises**, ordered from easiest to hardest. Each exercise includes a **statement** (what to do) and its **solution** in a script, explained in simple language.
 
@@ -47,8 +47,8 @@ Each exercise lives in **its own folder**, with two files:
 
 ```text
 .
-├── README.md                    ← Spanish version of this file
-├── README.en.md                 ← This file
+├── README.md                    ← This file (English)
+├── README.es.md                 ← Spanish version of this file
 ├── GUIA-entorno-bash.md         ← Guide to set up the working environment
 ├── ejercicio-presentacion/
 │   ├── Enunciado.md             ← What the exercise asks for
