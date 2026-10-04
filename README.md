@@ -119,8 +119,8 @@ Topics are introduced gradually.
 | # | Exercise | What it practices | Status |
 |---|---|---|---|
 | 1 | [Personalized introduction](ejercicio-presentacion/Enunciado.md) | `read`, variables, `if / elif / else`, validation with `while` | ✅ Completed |
-| 2 | Even or odd | Number operations and conditions | ✅ Completed |
-| 3 | Multiplication table | `for` loop | ⏳ Pending |
+| 2 | [Even or odd](ejercicio-par-impar/Enunciado.md) | Number operations and conditions | ✅ Completed |
+| 3 | [Multiplication table](ejercicio-tabla-multiplicar/Enunciado.md) | `for` loop | ✅ Completed |
 | 4 | File counter | Going through a folder and counting | ⏳ Pending |
 | 5 | Temperature converter | Menu and calculations with decimals | ⏳ Pending |
 | 6 | Check if a file exists | Checks on files and folders | ⏳ Pending |
