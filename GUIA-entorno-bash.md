@@ -220,32 +220,220 @@ Pulsar **Ctrl + ñ** (o menú *Terminal → Nueva terminal*). Se abre un panel i
 
 ### 7.4. Dar permiso de ejecución
 
+Cada archivo de Linux tiene unos **permisos**: reglas que indican quién puede leerlo, modificarlo o ejecutarlo. Cuando se crea un archivo nuevo, **no tiene permiso de ejecución**. Por seguridad, Linux no deja ejecutar un archivo como programa hasta que se le concede ese permiso de forma expresa.
+
 ```bash
 chmod +x ejercicio01.sh
 ```
 
 | Parte | Qué significa |
 |---|---|
-| `chmod` | *change mode*: cambia los **permisos** de un archivo. |
-| `+x` | Añade el permiso de **ejecución** (`x` de *execute*). Sin él, Linux trata el archivo como un simple texto. |
+| `chmod` | *change mode* ("cambiar modo"): cambia los permisos de un archivo. |
+| `+x` | **Añade** el permiso de ejecución (`x` de *execute*). Sin él, Linux trata el archivo como un simple texto. |
 | `ejercicio01.sh` | El archivo al que se aplica el cambio. |
 
-Solo hace falta **una vez por script**.
+Solo hace falta hacerlo **una vez por script**. Después, el permiso se conserva.
+
+#### El signo `+` y el signo `-`
+
+| Comando | Qué hace |
+|---|---|
+| `chmod +x archivo.sh` | **Añade** el permiso de ejecución. |
+| `chmod -x archivo.sh` | **Quita** el permiso de ejecución. |
+
+Un error muy común es escribir `-x` en lugar de `+x`. El resultado es que el script **deja de poder ejecutarse** y aparece este mensaje:
+
+```text
+bash: ./ejercicio01.sh: Permission denied
+```
+
+*Permission denied* significa "permiso denegado". Si aparece, hay que comprobar los permisos del archivo (véase el apartado siguiente).
+
+---
 
 ### 7.5. Comprobar los permisos
 
+#### Con `ls -l`
+
 ```bash
-ls -l
+ls -l ejercicio01.sh
 ```
 
-La opción `-l` (*long*) muestra una línea por archivo con información detallada:
+| Parte | Qué significa |
+|---|---|
+| `ls` | *list*: lista archivos y carpetas. |
+| `-l` | *long* ("largo"): muestra una línea de detalles por cada archivo. |
+| `ejercicio01.sh` | El archivo que se quiere consultar. Si se omite, se muestran todos los de la carpeta actual. |
+
+Resultado:
 
 ```text
 -rwxr-xr-x 1 david david 30 Oct  3 13:16 ejercicio01.sh
 ```
 
-Las letras del principio son los permisos: `r` (leer), `w` (escribir) y `x` (ejecutar). Si aparece la `x`, el permiso está concedido. Además, el nombre del archivo se muestra **en verde**, que es el color que usa la terminal para los archivos ejecutables.
+Cada parte de la línea tiene un significado:
 
+| Columna | Ejemplo | Qué indica |
+|---|---|---|
+| 1 | `-rwxr-xr-x` | Tipo de archivo y **permisos** |
+| 2 | `1` | Número de enlaces (normalmente no importa) |
+| 3 | `david` | **Propietario**: el usuario dueño del archivo |
+| 4 | `david` | **Grupo** dueño del archivo |
+| 5 | `30` | Tamaño en bytes |
+| 6 | `Oct 3 13:16` | Fecha y hora de la última modificación |
+| 7 | `ejercicio01.sh` | Nombre del archivo |
+
+#### Cómo se leen los permisos
+
+Los diez caracteres del principio se dividen en **cuatro partes**:
+
+```text
+-   rwx   r-x   r-x
+1    2     3     4
+```
+
+| Parte | Ejemplo | Qué indica |
+|---|---|---|
+| 1 | `-` | **Tipo**: `-` es un archivo normal, `d` es una carpeta (*directory*) y `l` es un enlace (*link*). |
+| 2 | `rwx` | Permisos del **propietario** (*user*). |
+| 3 | `r-x` | Permisos del **grupo** (*group*). |
+| 4 | `r-x` | Permisos de **todos los demás** (*others*). |
+
+Cada grupo de tres letras indica qué se puede hacer:
+
+| Letra | Significado | Qué permite |
+|---|---|---|
+| `r` | *read* (leer) | Ver el contenido del archivo. |
+| `w` | *write* (escribir) | Modificar o borrar el contenido. |
+| `x` | *execute* (ejecutar) | Ejecutarlo como un programa o script. |
+| `-` | Guion | Ese permiso **no está concedido**. |
+
+Si aparece una `x`, el permiso de ejecución está concedido. Además, en la terminal el nombre del archivo se muestra **en verde** cuando es ejecutable.
+
+#### Ejemplos para practicar la lectura
+
+| Permisos | Cómo se lee | ¿Se puede ejecutar? |
+|---|---|---|
+| `-rwxr-xr-x` | Archivo. El propietario puede leer, escribir y ejecutar. El grupo y los demás pueden leer y ejecutar. | ✅ Sí |
+| `-rw-r--r--` | Archivo. El propietario puede leer y escribir. El grupo y los demás solo pueden leer. | ❌ No |
+| `-rw-------` | Archivo privado. Solo el propietario puede leerlo y escribirlo. | ❌ No |
+| `drwxr-xr-x` | **Carpeta**. En una carpeta, la `x` significa "poder entrar en ella". | (no aplica) |
+
+Un archivo recién creado suele quedar como `-rw-r--r--`. Tras aplicar `chmod +x`, pasa a `-rwxr-xr-x`.
+
+#### Ver también los archivos ocultos
+
+```bash
+ls -la
+```
+
+La opción `a` (*all*, "todos") añade los archivos cuyo nombre empieza por un punto (por ejemplo, `.bashrc`), que normalmente no se muestran. Las opciones se pueden combinar: `-la` equivale a `-l -a`.
+
+#### Con `stat`
+
+El comando `stat` muestra información completa de un archivo:
+
+```bash
+stat ejercicio01.sh
+```
+
+Para ver **solo los permisos**:
+
+```bash
+stat -c "%A %a %n" ejercicio01.sh
+```
+
+| Parte | Qué significa |
+|---|---|
+| `stat` | Muestra información detallada de un archivo. |
+| `-c` | Permite elegir el formato de la salida. |
+| `%A` | Los permisos en **letras** (`-rwxr-xr-x`). |
+| `%a` | Los permisos en **número** (`755`). |
+| `%n` | El nombre del archivo. |
+
+Resultado:
+
+```text
+-rwxr-xr-x 755 ejercicio01.sh
+```
+
+#### Los permisos en formato numérico
+
+Los permisos también se pueden escribir con números. Cada permiso tiene un valor:
+
+| Permiso | Valor |
+|---|---|
+| `r` (leer) | 4 |
+| `w` (escribir) | 2 |
+| `x` (ejecutar) | 1 |
+| `-` (sin permiso) | 0 |
+
+Se suman los valores de cada grupo de tres letras:
+
+| Grupo | Cuenta | Número |
+|---|---|---|
+| `rwx` | 4 + 2 + 1 | **7** |
+| `rw-` | 4 + 2 + 0 | **6** |
+| `r-x` | 4 + 0 + 1 | **5** |
+| `r--` | 4 + 0 + 0 | **4** |
+| `---` | 0 + 0 + 0 | **0** |
+
+El resultado son **tres cifras**, una por cada parte: propietario, grupo y demás. Por ejemplo:
+
+| Letras | Propietario | Grupo | Demás | Número |
+|---|---|---|---|---|
+| `-rwxr-xr-x` | `rwx` = 7 | `r-x` = 5 | `r-x` = 5 | **755** |
+| `-rw-r--r--` | `rw-` = 6 | `r--` = 4 | `r--` = 4 | **644** |
+| `-rw-------` | `rw-` = 6 | `---` = 0 | `---` = 0 | **600** |
+
+Los valores más habituales son `755` para scripts y programas, y `644` para archivos de texto normales.
+
+Este formato también sirve para **dar permisos** con `chmod`:
+
+```bash
+chmod 755 ejercicio01.sh
+```
+
+| Comando | Qué hace |
+|---|---|
+| `chmod +x archivo.sh` | **Añade** el permiso de ejecución y no toca los demás permisos. |
+| `chmod 755 archivo.sh` | **Fija** todos los permisos a la vez: `rwx` para el propietario y `r-x` para el grupo y los demás. |
+
+Sobre un archivo recién creado (`644`), los dos comandos dan el mismo resultado: `755`.
+
+> ⚠️ **Precaución:** conviene evitar `chmod 777`, que da todos los permisos a todo el mundo. Es inseguro, y casi nunca hace falta.
+
+#### Comprobar permisos dentro de un script
+
+Bash puede comprobar los permisos de un archivo desde el propio script. Esto se utilizará más adelante en ejercicios como el de comprobar si un archivo existe:
+
+```bash
+if [ -x ejercicio01.sh ]; then
+    echo "Se puede ejecutar."
+else
+    echo "No tiene permiso de ejecución."
+fi
+```
+
+| Prueba | Es verdadera si el archivo existe y... |
+|---|---|
+| `-x archivo` | tiene permiso de **ejecución**. |
+| `-r archivo` | tiene permiso de **lectura**. |
+| `-w archivo` | tiene permiso de **escritura**. |
+
+---
+
+#### Resumen del apartado
+
+| Quiero... | Comando |
+|---|---|
+| Dar permiso de ejecución | `chmod +x archivo.sh` |
+| Quitar permiso de ejecución | `chmod -x archivo.sh` |
+| Ver los permisos de un archivo | `ls -l archivo.sh` |
+| Ver los permisos de toda la carpeta | `ls -l` |
+| Incluir archivos ocultos | `ls -la` |
+| Ver los permisos en número | `stat -c "%a %n" archivo.sh` |
+| Fijar los permisos con números | `chmod 755 archivo.sh` |
 ### 7.6. Ejecutar el script
 
 ```bash
