@@ -117,8 +117,8 @@ Los temas se van introduciendo de forma progresiva.
 | # | Ejercicio | Qué practica | Estado |
 |---|---|---|---|
 | 1 | [Presentación personalizada](ejercicio-presentacion/Enunciado.md) | `read`, variables, `if / elif / else`, validación con `while` | ✅ Completado |
-| 2 | Par o impar | Operaciones con números y condiciones | ✅ Completado |
-| 3 | Tabla de multiplicar | Bucle `for` | ⏳ Pendiente |
+| 2 | [Par o impar](ejercicio-par-impar/Enunciado.md)  | Operaciones con números y condiciones | ✅ Completado |
+| 3 | [Tabla de multiplicar](ejercicio-tabla-multiplicar/Enunciado.md) | Bucle `for` | ✅ Completado |
 | 4 | Contador de archivos | Recorrer una carpeta y contar | ⏳ Pendiente |
 | 5 | Conversor de temperatura | Menú y cálculos con decimales | ⏳ Pendiente |
 | 6 | Comprobar si un archivo existe | Comprobaciones de archivos y carpetas | ⏳ Pendiente |
