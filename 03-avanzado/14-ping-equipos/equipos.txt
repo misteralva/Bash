@@ -1,0 +1,7 @@
+# Equipos a comprobar
+127.0.0.1
+localhost
+8.8.8.8
+
+192.0.2.1
+equipo-que-no-existe

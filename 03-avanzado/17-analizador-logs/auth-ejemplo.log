@@ -1,0 +1,17 @@
+Oct  3 10:15:01 servidor sshd[1234]: Failed password for root from 203.0.113.5 port 52341 ssh2
+Oct  3 10:15:09 servidor sshd[1234]: Failed password for invalid user admin from 203.0.113.5 port 52345 ssh2
+Oct  3 10:15:17 servidor sshd[1236]: Failed password for root from 203.0.113.5 port 52350 ssh2
+Oct  3 10:16:02 servidor sshd[1301]: Accepted password for david from 192.168.1.20 port 40222 ssh2
+Oct  3 10:17:45 servidor sshd[1355]: Failed password for invalid user test from 198.51.100.7 port 33010 ssh2
+Oct  3 10:17:52 servidor sshd[1355]: Failed password for invalid user oracle from 198.51.100.7 port 33014 ssh2
+Oct  3 10:18:30 servidor sshd[1402]: Failed password for root from 203.0.113.5 port 52360 ssh2
+Oct  3 10:19:11 servidor sshd[1450]: Failed password for ana from 192.0.2.44 port 45100 ssh2
+Oct  3 10:19:19 servidor sshd[1450]: Accepted password for ana from 192.168.1.35 port 45110 ssh2
+Oct  3 10:20:05 servidor sshd[1500]: Failed password for root from 198.51.100.7 port 33020 ssh2
+Oct  3 10:20:13 servidor sshd[1500]: Failed password for root from 198.51.100.7 port 33022 ssh2
+Oct  3 10:21:40 servidor sshd[1555]: Failed password for invalid user admin from 203.0.113.5 port 52370 ssh2
+Oct  3 10:22:02 servidor sshd[1601]: Failed password for ana from 192.0.2.44 port 45120 ssh2
+Oct  3 10:23:15 servidor sshd[1650]: Failed password for root from 203.0.113.99 port 60001 ssh2
+Oct  3 10:24:00 servidor sshd[1700]: Accepted password for david from 192.168.1.20 port 40230 ssh2
+Oct  3 10:25:10 servidor sshd[1750]: Connection closed by 203.0.113.5 port 52380 [preauth]
+Oct  3 10:25:33 servidor CRON[1800]: pam_unix(cron:session): session opened for user root
