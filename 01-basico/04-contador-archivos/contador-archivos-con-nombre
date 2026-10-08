@@ -1,12 +1,16 @@
 #!/bin/bash
 
+# ==============================================================================
+# SCRIPT 3: Mostrar Nombres de Elementos (Reto 2)
+# Descripción: Imprime en pantalla el nombre de cada archivo y carpeta utilizando
+#              el comando 'basename' para extraer el nombre limpio de la ruta.
+# ==============================================================================
+
 read -p "Escribe la ruta de un directorio: " ruta
 
 while ! [ -d "$ruta" ]; do
     echo "Error: '$ruta' no existe."
     read -p "Escribe la ruta de un directorio: " ruta
-
-
 done
 
 echo "Directorio: $ruta"
@@ -15,11 +19,13 @@ archivos=0
 carpetas=0
 
 for elemento in "$ruta"/* "$ruta"/.*; do
-   
+    
+    # Ignoramos '.' y '..'
     if [ "$elemento" = "$ruta/." ] || [ "$elemento" = "$ruta/.." ]; then
         continue
     fi
 
+    # Incrementamos contador e imprimimos el nombre limpio con $(basename ...)
     if [ -f "$elemento" ]; then
         archivos=$((archivos + 1)) 
         echo "Archivo: $(basename "$elemento")"
@@ -29,8 +35,6 @@ for elemento in "$ruta"/* "$ruta"/.*; do
     fi
 done
 
-
+echo "-------------------"
 echo "Archivos: $archivos"
 echo "Carpetas: $carpetas"
-
-
