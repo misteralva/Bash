@@ -4,7 +4,7 @@
 
 A collection of **Bash scripting exercises**, ordered from easiest to hardest. Each exercise includes a **statement** (what to do) and its **solution** in a script.
 
-> 📝 **Note:** the exercise statements and the comments inside the scripts are currently written in Spanish.
+> 📝 **Note:** the exercise statements and the comments inside the scripts are currently written in Spanish, and so are the folder names.
 
 ---
 
@@ -35,7 +35,7 @@ This repository has three uses:
 
 - **Personal study:** to follow progress and review what has been learned.
 - **Portfolio:** to show the work done to anyone who wants to review it.
-- **Helping others:** anyone starting with Bash can follow the exercises in order and read the explained solutions.
+- **Helping others:** anyone starting with Bash can follow the exercises in order and read the solutions.
 
 No previous experience is needed. Each exercise explains the new concepts it uses.
 
@@ -43,21 +43,35 @@ No previous experience is needed. Each exercise explains the new concepts it use
 
 ## 3. How it is organized
 
-Each exercise lives in **its own folder**, with two files:
+Exercises are grouped in **folders by level**, and inside each level every exercise lives in its **own numbered folder**, with two files:
 
 ```text
 .
-├── README.md                    ← This file (English)
-├── README.es.md                 ← Spanish version of this file
-├── GUIA-entorno-bash.md         ← Guide to set up the working environment
-├── ejercicio-presentacion/
-│   ├── Enunciado.md             ← What the exercise asks for
-│   └── presentacion.sh          ← The solution
-├── ejercicio-xxxxx/
-│   ├── Enunciado.md
-│   └── xxxxx.sh
-└── ...
+├── README.md                          ← This file (English)
+├── README.es.md                       ← Spanish version of this file
+├── GUIA-entorno-bash.md               ← Guide to set up the working environment
+├── 01-basico/
+│   ├── 01-presentacion/
+│   │   ├── Enunciado.md               ← What the exercise asks for
+│   │   └── presentacion.sh            ← The solution
+│   ├── 02-par-impar/
+│   └── ...
+├── 02-intermedio/
+│   └── ...
+├── 03-avanzado/
+│   └── ...
+└── 04-retos-finales/
+    └── ...
 ```
+
+| Level folder | Level | Exercises |
+|---|---|---|
+| `01-basico` | 🟢 Basic | 1 to 6 |
+| `02-intermedio` | 🟡 Intermediate | 7 to 13 |
+| `03-avanzado` | 🟠 Advanced | 14 to 20 |
+| `04-retos-finales` | 🔴 Final challenges | 21 to 24 |
+
+Exercise numbers are **global** (1 to 24) and match the `#` column of the table below, so exercise 7 is always `07-...`.
 
 | File | What it contains |
 |---|---|
@@ -81,31 +95,33 @@ Topics are introduced gradually.
 - Conditions with `if / elif / else`.
 - Comparing numbers (`-eq`, `-lt`, `-ge`...) and text.
 - `for` and `while` loops.
+- Menus with `case` and calculations with `bc`.
 - Checking files and folders.
 
 ### 🟡 Intermediate level: more complete scripts
 
 - Validating data with regular expressions (`=~`).
-- Menus with `case`.
-- Functions to reuse code.
-- Script arguments (`$1`, `$2`, `$#`).
+- Random numbers and counters.
+- Script arguments (`$1`, `$2`, `$#`) and exit codes.
 - Reading and writing text files.
 - Backups with `tar`.
 - Managing system users.
-- Recording actions in log files.
+- Renaming files in bulk.
 
 ### 🟠 Advanced level: administration and networking
 
 - Checking the connection to other machines (`ping`).
-- Checking open ports.
+- Checking open ports and working with arrays.
 - Analyzing logs with `grep`, `awk`, `sort` and `uniq`.
 - Controlling services with `systemctl`.
 - Monitoring CPU, memory and disk.
+- Reading the network configuration with `ip`.
 - Searching for and cleaning files with `find`.
 
 ### 🔴 Final challenges: complete projects
 
-- Combining several scripts into one tool with a menu.
+- Functions to organize and reuse code.
+- Combining several scripts into one tool with a menu and a log.
 - Automating installations with error control.
 - Generating reports in HTML.
 - Scheduling automatic tasks with `cron`.
@@ -118,45 +134,45 @@ Topics are introduced gradually.
 
 | # | Exercise | What it practices | Status |
 |---|---|---|---|
-| 1 | [Personalized introduction](ejercicio-presentacion/Enunciado.md) | `read`, variables, `if / elif / else`, validation with `while` | ✅ Completed |
-| 2 | [Even or odd](ejercicio-par-impar/Enunciado.md) | Number operations and conditions | ✅ Completed |
-| 3 | [Multiplication table](ejercicio-tabla-multiplicar/Enunciado.md) | `for` loop | ✅ Completed |
-| 4 | File counter | Going through a folder and counting | ⏳ Pending |
-| 5 | Temperature converter | Menu and calculations with decimals | ⏳ Pending |
-| 6 | Check if a file exists | Checks on files and folders | ⏳ Pending |
+| 1 | [Personalized introduction](01-basico/01-presentacion/Enunciado.md) | `read`, variables, `if / elif / else`, validation with `while` | ✅ Completed |
+| 2 | [Even or odd](01-basico/02-par-impar/Enunciado.md) | Remainder (`%`), conditions and validation | ✅ Completed |
+| 3 | [Multiplication table](01-basico/03-tabla-multiplicar/Enunciado.md) | `for` loops (including the three-part form and nested loops) | ✅ Completed |
+| 4 | [File counter](01-basico/04-contador-archivos/Enunciado.md) | Going through a folder, `-f`, `-d` and counters | 🚧 In progress |
+| 5 | [Temperature converter](01-basico/05-conversor-temperatura/Enunciado.md) | `case`, `bc` and decimals | ⏳ Pending |
+| 6 | [Check if a file exists](01-basico/06-comprobar-archivo/Enunciado.md) | `-e`, `-f`, `-d`, `-r`, `-w`, `-x` | ⏳ Pending |
 
 ### 🟡 Intermediate level
 
 | # | Exercise | What it practices | Status |
 |---|---|---|---|
-| 7 | Guess the number | Random numbers, loops and counters | ⏳ Pending |
-| 8 | Password validator | Regular expressions | ⏳ Pending |
-| 9 | Automatic backup | `tar`, dates in file names | ⏳ Pending |
-| 10 | User manager | `useradd`, `userdel`, administrator permissions | ⏳ Pending |
-| 11 | Mass renamer | Loops over files | ⏳ Pending |
-| 12 | Contact book | Reading and writing text files | ⏳ Pending |
-| 13 | Passing parameters | Arguments `$1`, `$2`, `$#` | ⏳ Pending |
+| 7 | [Guess the number](02-intermedio/07-adivina-numero/Enunciado.md) | `$RANDOM`, loops and counters | ⏳ Pending |
+| 8 | [Password validator](02-intermedio/08-validador-contrasenas/Enunciado.md) | Regular expressions and `read -s` | ⏳ Pending |
+| 9 | [Automatic backup](02-intermedio/09-copia-seguridad/Enunciado.md) | `tar`, dates in file names | ⏳ Pending |
+| 10 | [User manager](02-intermedio/10-gestor-usuarios/Enunciado.md) | `useradd`, `userdel`, administrator permissions | ⏳ Pending |
+| 11 | [Mass renamer](02-intermedio/11-renombrador-masivo/Enunciado.md) | Loops over files | ⏳ Pending |
+| 12 | [Contact book](02-intermedio/12-agenda-contactos/Enunciado.md) | Reading and writing text files | ⏳ Pending |
+| 13 | [Passing parameters](02-intermedio/13-paso-parametros/Enunciado.md) | Arguments `$1`, `$2`, `$#` and exit codes | ⏳ Pending |
 
 ### 🟠 Advanced level
 
 | # | Exercise | What it practices | Status |
 |---|---|---|---|
-| 14 | Ping a list of machines | `ping`, reading files line by line | ⏳ Pending |
-| 15 | Simple port scanner | Checking ports with `nc` or `/dev/tcp` | ⏳ Pending |
-| 16 | System monitor | CPU, RAM, disk and alerts in a log | ⏳ Pending |
-| 17 | Log analyzer | `grep`, `awk`, `sort`, `uniq` | ⏳ Pending |
-| 18 | Network report | IP, mask, gateway and DNS | ⏳ Pending |
-| 19 | Service checker | `systemctl` | ⏳ Pending |
-| 20 | Old file cleanup | `find`, confirmations | ⏳ Pending |
+| 14 | [Ping a list of machines](03-avanzado/14-ping-equipos/Enunciado.md) | `ping`, reading files line by line | ⏳ Pending |
+| 15 | [Simple port scanner](03-avanzado/15-escaner-puertos/Enunciado.md) | Checking ports with `/dev/tcp`, arrays | ⏳ Pending |
+| 16 | [System monitor](03-avanzado/16-monitor-sistema/Enunciado.md) | CPU, RAM, disk and alerts in a log | ⏳ Pending |
+| 17 | [Log analyzer](03-avanzado/17-analizador-logs/Enunciado.md) | `grep`, `awk`, `sort`, `uniq` | ⏳ Pending |
+| 18 | [Network report](03-avanzado/18-informe-red/Enunciado.md) | IP, prefix, gateway and DNS | ⏳ Pending |
+| 19 | [Service checker](03-avanzado/19-comprobador-servicios/Enunciado.md) | `systemctl` | ⏳ Pending |
+| 20 | [Old file cleanup](03-avanzado/20-limpieza-archivos/Enunciado.md) | `find`, confirmations | ⏳ Pending |
 
 ### 🔴 Final challenges
 
 | # | Exercise | What it practices | Status |
 |---|---|---|---|
-| 21 | Complete administration menu | Functions and menus that combine several scripts | ⏳ Pending |
-| 22 | Automated installer | Installing a web server with error control | ⏳ Pending |
-| 23 | HTML report generator | Creating a page with the system status | ⏳ Pending |
-| 24 | Scheduled backup with `cron` | Automatic tasks | ⏳ Pending |
+| 21 | [Complete administration menu](04-retos-finales/21-menu-administracion/Enunciado.md) | Functions and menus that combine several scripts | ⏳ Pending |
+| 22 | [Automated installer](04-retos-finales/22-instalador-automatizado/Enunciado.md) | Installing a web server with error control | ⏳ Pending |
+| 23 | [HTML report generator](04-retos-finales/23-informe-html/Enunciado.md) | Creating a page with the system status | ⏳ Pending |
+| 24 | [Scheduled backup with `cron`](04-retos-finales/24-backup-cron/Enunciado.md) | Automatic tasks | ⏳ Pending |
 
 ---
 
